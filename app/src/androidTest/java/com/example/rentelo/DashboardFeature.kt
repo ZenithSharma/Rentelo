@@ -32,4 +32,21 @@ class DashboardFeature : BaseUITest() {
             )
         ).check(matches(withDrawable(R.mipmap.bachelor_friendly))).check(matches(isDisplayed()))
     }
+
+    @Test
+    fun displayOwnersPropertySection(){
+        onView(
+            allOf(
+                withId(R.id.owners_property_label),
+                isDescendantOfA(withId(R.id.layout_owners_property))
+            )
+        ).check(matches(withText("Owners Property"))).check(matches(isDisplayed()))
+
+        onView(
+            allOf(
+                withId(R.id.owners_property_icon),
+                isDescendantOfA(withId(R.id.layout_owners_property))
+            )
+        ).check(matches(withDrawable(R.mipmap.owner_property))).check(matches(isDisplayed()))
+    }
 }
