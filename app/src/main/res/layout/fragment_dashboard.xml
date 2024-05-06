@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:weightSum="3"
     tools:context=".Dashboard">
 
     <LinearLayout
         android:id="@+id/layout_bachelor_friendly"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_margin="@dimen/margin_size_medium"
         android:orientation="vertical">
 
@@ -38,8 +40,9 @@
 
     <LinearLayout
         android:id="@+id/layout_owners_property"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_margin="@dimen/margin_size_medium"
         android:orientation="vertical">
 
@@ -64,4 +67,34 @@
             android:text="@string/owners_property"
             android:textAlignment="center" />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_great_night_life"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="@dimen/margin_size_medium"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="@dimen/margin_size_medium"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation">
+
+            <ImageView
+                android:id="@+id/great_night_life_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/night_life" />
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/great_night_life_label"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/great_night_life"
+            android:textAlignment="center" />
+    </LinearLayout>
+
 </LinearLayout>

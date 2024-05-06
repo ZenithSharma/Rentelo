@@ -34,7 +34,7 @@ class DashboardFeature : BaseUITest() {
     }
 
     @Test
-    fun displayOwnersPropertySection(){
+    fun displayOwnersPropertySection() {
         onView(
             allOf(
                 withId(R.id.owners_property_label),
@@ -48,5 +48,22 @@ class DashboardFeature : BaseUITest() {
                 isDescendantOfA(withId(R.id.layout_owners_property))
             )
         ).check(matches(withDrawable(R.mipmap.owner_property))).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun displayGreatNightLifeSection() {
+        onView(
+            allOf(
+                withId(R.id.great_night_life_label),
+                isDescendantOfA(withId(R.id.layout_great_night_life))
+            )
+        ).check(matches(withText("Great Night Life"))).check(matches(isDisplayed()))
+
+        onView(
+            allOf(
+                withId(R.id.great_night_life_icon),
+                isDescendantOfA(withId(R.id.layout_great_night_life))
+            )
+        ).check(matches(withDrawable(R.mipmap.night_life))).check(matches(isDisplayed()))
     }
 }
