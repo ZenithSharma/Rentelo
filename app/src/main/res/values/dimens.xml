@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="item_offset">2dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="dimen_1dp">1dp</dimen>
+    <dimen name="dimen_0dp">0dp</dimen>
+    <dimen name="dimen_2dp">2dp</dimen>
+    <dimen name="dimen_3dp">3dp</dimen>
+    <dimen name="dimen_4dp">4dp</dimen>
+    <dimen name="dimen_5dp">5dp</dimen>
+
+    <dimen name="text_size_very_small">10sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+
+    <dimen name="margin_size_small">8dp</dimen>
+    <dimen name="margin_size_very_small">5dp</dimen>
+    <dimen name="margin_size_medium">16dp</dimen>
+    <dimen name="margin_size_large">18dp</dimen>
+    <dimen name="margin_size_elarge">82dp</dimen>
+
+    <dimen name="padding_size_very_small">6dp</dimen>
+    <dimen name="padding_size_small">8dp</dimen>
+    <dimen name="padding_size_medium">12dp</dimen>
+    <dimen name="padding_size_large">15dp</dimen>
+
+
+    <dimen name="image_size_very_small">50dp</dimen>
+    <dimen name="header_image_height">53dp</dimen>
+    <dimen name="header_image_width">50dp</dimen>
+    <dimen name="image_size_avg">60dp</dimen>
+    <dimen name="image_size_small">80dp</dimen>
+    <dimen name="image_size_avg_normal">90dp</dimen>
+    <dimen name="image_size_normal">100dp</dimen>
+    <dimen name="image_size_large">150dp</dimen>
+    <dimen name="image_size_very_large">200dp</dimen>
+    <dimen name="user_registration_image_height">16dp</dimen>
+    <dimen name="user_registration_image_width">16dp</dimen>
+
+
+    <!--dimens for card-->
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+
+    <!--For customize Switch-->
+
+    <dimen name="switch_track_width">15dp</dimen>
+    <dimen name="switch_track_height">25dp</dimen>
+
+    <dimen name="switch_thumb_width">25dp</dimen>
+    <dimen name="switch_thumb_height">25dp</dimen>
+
+    <dimen name="switch_radius">50dp</dimen>
+    <dimen name="switch_selector_padding">2dp</dimen>
+    <dimen name="switch_stroke_height">0dp</dimen>
+    <dimen name="feed_header_title_size">16sp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+
+    <dimen name="design_navigation_icon_size" tools:override="true">16dp</dimen>
+    <dimen name="design_navigation_separator_vertical_padding" tools:override="true">15dp</dimen>
+</resources>
