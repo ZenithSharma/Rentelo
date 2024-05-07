@@ -1,6 +1,7 @@
 package com.example.rentelo.dashboard
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,8 +38,8 @@ class Dashboard : Fragment() {
     }
 
     private fun observeLoader() {
-        featuredRentListViewModel.loader.observe(this as LifecycleOwner){ loading ->
-            when(loading){
+        featuredRentListViewModel.loader.observe(this as LifecycleOwner) { loading ->
+            when (loading) {
                 true -> binding.loader.visibility = View.VISIBLE
                 false -> binding.loader.visibility = View.INVISIBLE
             }
@@ -47,10 +48,12 @@ class Dashboard : Fragment() {
 
     private fun observeFeatureRentList() {
         featuredRentListViewModel.featuredRentList.observe(this as LifecycleOwner) { featuredRentList ->
-            if (featuredRentList.getOrNull() != null){
-                adapter.submitList(featuredRentList.getOrNull())
-            }else{
+            Log.d("Featured Rent", featuredRentList.toString())
 
+            if (featuredRentList.getOrNull() != null) {
+                adapter.submitList(featuredRentList.getOrNull())
+            } else {
+                //TODO
             }
 
         }
@@ -64,7 +67,7 @@ class Dashboard : Fragment() {
     private fun setUpRv() {
         adapter = FeaturedRentAdapter()
         binding.featuredRentList.adapter = adapter
-        binding.featuredRentList.layoutManager = LinearLayoutManager(context)
+        binding.featuredRentList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
     }
 
     companion object {

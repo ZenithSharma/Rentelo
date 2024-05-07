@@ -90,9 +90,9 @@ class DashboardFeature : BaseUITest() {
         onView(
             allOf(
                 withId(R.id.featured_rent_price),
-                isDescendantOfA(nthChildOf(withId(R.id.featured_rent_price), 0))
+                isDescendantOfA(nthChildOf(withId(R.id.featured_rent_list), 0))
             )
-        ).check(matches(withText("2500"))).check(matches(isDisplayed()))
+        ).check(matches(withText("Rs 2500 /Month"))).check(matches(isDisplayed()))
 
         onView(
             allOf(
@@ -106,6 +106,6 @@ class DashboardFeature : BaseUITest() {
                 withId(R.id.featured_rent_price),
                 isDescendantOfA(nthChildOf(withId(R.id.featured_rent_list), 1))
             )
-        ).check(matches(withText("2200"))).check(matches(isDisplayed()))
+        ).check(matches(withText("Rs 2200 /Month"))).check(matches(isDisplayed()))
     }
 }

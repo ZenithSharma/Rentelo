@@ -44,6 +44,7 @@ dependencies {
     val coroutineVersion = "1.6.4"
     val coreTestingVersion = "2.2.0"
     val lifecycleVersion = "2.7.0"
+    val retrofitVersion = "2.9.0"
 
     implementation("androidx.core:core-ktx:1.13.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -59,6 +60,11 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.48.1")
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation("com.squareup.okhttp3:okhttp")
+
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
     testImplementation("org.mockito:mockito-inline:5.2.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
