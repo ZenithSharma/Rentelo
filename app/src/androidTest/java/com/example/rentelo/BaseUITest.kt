@@ -1,7 +1,12 @@
 package com.example.rentelo
 
+import android.view.View
+import android.view.ViewGroup
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.hamcrest.Description
+import org.hamcrest.Matcher
+import org.hamcrest.TypeSafeMatcher
 import org.junit.Rule
 import org.junit.runner.RunWith
 
@@ -9,4 +14,23 @@ import org.junit.runner.RunWith
 abstract class BaseUITest {
     val mActivityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
         @Rule get
+
+    //Utility Method
+    fun nthChildOf(parentMatcher: Matcher<View>, childPosition: Int): Matcher<View> {
+        return object : TypeSafeMatcher<View>() {
+            override fun describeTo(description: Description) {
+                description.appendText("position $childPosition of parent ")
+                parentMatcher.describeTo(description)
+            }
+
+            public override fun matchesSafely(view: View): Boolean {
+                if (view.parent !is ViewGroup) return false
+                val parent = view.parent as ViewGroup
+
+                return (parentMatcher.matches(parent) && parent.childCount > childPosition && parent.getChildAt(
+                    childPosition
+                ) == view)
+            }
+        }
+    }
 }
