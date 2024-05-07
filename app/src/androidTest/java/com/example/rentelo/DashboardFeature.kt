@@ -76,6 +76,8 @@ class DashboardFeature : BaseUITest() {
 
     @Test
     fun displayListOfFeaturedRentList() {
+
+        Thread.sleep(4000)
         assertRecyclerViewItemCount(R.id.featured_rent_list, 5)
 
         onView(
