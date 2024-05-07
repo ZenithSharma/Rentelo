@@ -31,8 +31,18 @@ class Dashboard : Fragment() {
         // Inflate the layout for this fragment
         setUpRv()
         setUpViewModel()
+        observeLoader()
         observeFeatureRentList()
         return binding.root
+    }
+
+    private fun observeLoader() {
+        featuredRentListViewModel.loader.observe(this as LifecycleOwner){ loading ->
+            when(loading){
+                true -> binding.loader.visibility = View.VISIBLE
+                false -> binding.loader.visibility = View.INVISIBLE
+            }
+        }
     }
 
     private fun observeFeatureRentList() {

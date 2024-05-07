@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
+import petros.efthymiou.groovy.utils.captureValues
 import petros.efthymiou.groovy.utils.getValueForTest
 
 class FeaturedRentListViewModelShould : BaseUnitTest() {
@@ -36,29 +37,52 @@ class FeaturedRentListViewModelShould : BaseUnitTest() {
     }
 
     @Test
-    fun emitErrorWhenReceivedError(){
+    fun emitErrorWhenReceivedError() {
         val viewModel = mockFailureCase()
-        assertEquals(exception,viewModel.featuredRentList.getValueForTest()!!.exceptionOrNull())
+        assertEquals(exception, viewModel.featuredRentList.getValueForTest()!!.exceptionOrNull())
+    }
+
+    @Test
+    fun showSpinnerWhileLoadingData() {
+        val viewModel = mockSuccessfulCase()
+        viewModel.loader.captureValues {
+            viewModel.featuredRentList.getValueForTest()
+            assertEquals(true, values[0])
+        }
+    }
+
+    @Test
+    fun closeSpinnerAfterDataLoaded() {
+        val viewModel = mockFailureCase()
+        viewModel.loader.captureValues {
+            viewModel.featuredRentList.getValueForTest()
+            assertEquals(false, values.last())
+        }
+    }
+
+    @Test
+    fun closeSpinnerAfterError() {
+        val viewModel = mockFailureCase()
+        viewModel.loader.captureValues {
+            viewModel.featuredRentList.getValueForTest()
+            assertEquals(false, values.last())
+        }
     }
 
     private fun mockSuccessfulCase(): FeaturedRentListViewModel {
         runBlocking {
-            whenever(repository.getFeaturedRentList()).thenReturn(
-                flow {
-                    emit(expected)
-                }
-            )
+            whenever(repository.getFeaturedRentList()).thenReturn(flow {
+                emit(expected)
+            })
         }
         return FeaturedRentListViewModel(repository)
     }
 
     private fun mockFailureCase(): FeaturedRentListViewModel {
         runBlocking {
-            whenever(repository.getFeaturedRentList()).thenReturn(
-                flow {
-                    emit(Result.failure(exception))
-                }
-            )
+            whenever(repository.getFeaturedRentList()).thenReturn(flow {
+                emit(Result.failure(exception))
+            })
         }
         return FeaturedRentListViewModel(repository)
     }
