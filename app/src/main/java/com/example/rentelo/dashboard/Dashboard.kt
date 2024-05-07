@@ -37,7 +37,12 @@ class Dashboard : Fragment() {
 
     private fun observeFeatureRentList() {
         featuredRentListViewModel.featuredRentList.observe(this as LifecycleOwner) { featuredRentList ->
-            adapter.submitList(featuredRentList)
+            if (featuredRentList.getOrNull() != null){
+                adapter.submitList(featuredRentList.getOrNull())
+            }else{
+
+            }
+
         }
     }
 
