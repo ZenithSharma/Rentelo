@@ -17,7 +17,7 @@ import org.junit.runner.RunWith
 
 
 @RunWith(AndroidJUnit4::class)
-class DashboardFeature : BaseUITest() {
+class DashboardFragmentFeature : BaseUITest() {
     @Test
     fun displayBachelorFriendlySection() {
         onView(
@@ -107,5 +107,31 @@ class DashboardFeature : BaseUITest() {
                 isDescendantOfA(nthChildOf(withId(R.id.featured_rent_list), 1))
             )
         ).check(matches(withText("Rs 2200 /Month"))).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun displayCollectionSectionTitle() {
+        assertDisplayed("Collection")
+    }
+
+    @Test
+    fun displayListOfCollectionRentList() {
+
+        Thread.sleep(4000)
+        assertRecyclerViewItemCount(R.id.collection_rent_list,4)
+
+        onView(
+            allOf(
+                withId(R.id.collection_rent_title),
+                isDescendantOfA(nthChildOf(withId(R.id.collection_rent_list), 0))
+            )
+        ).check(matches(withText("Cozy Living"))).check(matches(isDisplayed()))
+
+        onView(
+            allOf(
+                withId(R.id.collection_rent_title),
+                isDescendantOfA(nthChildOf(withId(R.id.collection_rent_list), 1))
+            )
+        ).check(matches(withText("Paying Guest"))).check(matches(isDisplayed()))
     }
 }

@@ -9,20 +9,31 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rentelo.dashboard.collection.CollectionAdapter
+import com.example.rentelo.dashboard.collection.CollectionRentViewModel
+import com.example.rentelo.dashboard.collection.CollectionRentViewModelFactory
+import com.example.rentelo.dashboard.featured.FeaturedRentAdapter
+import com.example.rentelo.dashboard.featured.FeaturedRentListViewModel
+import com.example.rentelo.dashboard.featured.FeaturedRentListViewModelFactory
 import com.example.rentelo.databinding.FragmentDashboardBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class Dashboard : Fragment() {
+class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: FeaturedRentAdapter
+    private lateinit var collectionAdapter: CollectionAdapter
     private lateinit var featuredRentListViewModel: FeaturedRentListViewModel
+    private lateinit var collectionRentViewModel: CollectionRentViewModel
 
     @Inject
-    lateinit var viewModelFactory: FeaturedRentListViewModelFactory
+    lateinit var collectionRentViewModelFactory: CollectionRentViewModelFactory
+
+    @Inject
+    lateinit var featuredViewModelFactory: FeaturedRentListViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -30,11 +41,26 @@ class Dashboard : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
-        setUpRv()
+        setUpFeaturedRv()
+        setUpCollectionRv()
         setUpViewModel()
         observeLoader()
         observeFeatureRentList()
+        observeCollectionRent()
         return binding.root
+    }
+
+    private fun observeCollectionRent() {
+        collectionRentViewModel.collectionRentList.observe(this as LifecycleOwner){ collectionRentList ->
+
+        }
+    }
+
+    private fun setUpCollectionRv() {
+        collectionAdapter = CollectionAdapter()
+        binding.collectionRentList.adapter = collectionAdapter
+        binding.collectionRentList.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun observeLoader() {
@@ -48,30 +74,31 @@ class Dashboard : Fragment() {
 
     private fun observeFeatureRentList() {
         featuredRentListViewModel.featuredRentList.observe(this as LifecycleOwner) { featuredRentList ->
-            Log.d("Featured Rent", featuredRentList.toString())
-
             if (featuredRentList.getOrNull() != null) {
                 adapter.submitList(featuredRentList.getOrNull())
             } else {
                 //TODO
             }
-
         }
     }
 
     private fun setUpViewModel() {
         featuredRentListViewModel =
-            ViewModelProvider(this, viewModelFactory)[FeaturedRentListViewModel::class.java]
+            ViewModelProvider(this, featuredViewModelFactory)[FeaturedRentListViewModel::class.java]
+        collectionRentViewModel = ViewModelProvider(
+            this, collectionRentViewModelFactory
+        )[CollectionRentViewModel::class.java]
     }
 
-    private fun setUpRv() {
+    private fun setUpFeaturedRv() {
         adapter = FeaturedRentAdapter()
         binding.featuredRentList.adapter = adapter
-        binding.featuredRentList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+        binding.featuredRentList.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 
     companion object {
         @JvmStatic
-        fun newInstance() = Dashboard()
+        fun newInstance() = DashboardFragment()
     }
 }

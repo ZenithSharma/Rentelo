@@ -1,6 +1,5 @@
-package com.example.rentelo.dashboard
+package com.example.rentelo.dashboard.featured
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

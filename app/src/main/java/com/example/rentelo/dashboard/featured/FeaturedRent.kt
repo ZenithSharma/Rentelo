@@ -1,4 +1,4 @@
-package com.example.rentelo.dashboard
+package com.example.rentelo.dashboard.featured
 
 data class FeaturedRent(
     val bed: Int,
