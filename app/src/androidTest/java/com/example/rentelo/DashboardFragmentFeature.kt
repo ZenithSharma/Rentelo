@@ -116,6 +116,10 @@ class DashboardFragmentFeature : BaseUITest() {
 
     @Test
     fun displayListOfCollectionRentList() {
+
+        Thread.sleep(4000)
+        assertRecyclerViewItemCount(R.id.collection_rent_list,4)
+
         onView(
             allOf(
                 withId(R.id.collection_rent_title),

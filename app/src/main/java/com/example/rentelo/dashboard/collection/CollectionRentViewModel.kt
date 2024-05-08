@@ -1,9 +1,13 @@
 package com.example.rentelo.dashboard.collection
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 
-class CollectionRentViewModel : ViewModel() {
+class CollectionRentViewModel(private val repository: CollectionRentRepository) : ViewModel() {
 
-    val collectionRentList = MutableLiveData<CollectionRent>()
+    var collectionRentList = liveData {
+        repository.getCollectionRentList().collect() {
+            emit(it)
+        }
+    }
 }

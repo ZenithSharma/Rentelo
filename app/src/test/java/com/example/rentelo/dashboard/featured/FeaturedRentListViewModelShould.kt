@@ -1,8 +1,5 @@
-package com.example.rentelo.dashboard
+package com.example.rentelo.dashboard.featured
 
-import com.example.rentelo.dashboard.featured.FeaturedRent
-import com.example.rentelo.dashboard.featured.FeaturedRentListRepository
-import com.example.rentelo.dashboard.featured.FeaturedRentListViewModel
 import com.example.rentelo.utils.BaseUnitTest
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
