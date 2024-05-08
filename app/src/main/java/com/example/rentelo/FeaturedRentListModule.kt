@@ -1,5 +1,6 @@
-package com.example.rentelo.dashboard
+package com.example.rentelo
 
+import com.example.rentelo.dashboard.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +15,7 @@ class FeaturedRentListModule {
 
     @Provides
     fun providesRetrofit(): Retrofit {
-        return Retrofit.Builder().baseUrl("http://192.168.101.8:3000/").client(OkHttpClient())
+        return Retrofit.Builder().baseUrl("http://172.20.10.2:3000/").client(OkHttpClient())
             .addConverterFactory(GsonConverterFactory.create()).build()
     }
 

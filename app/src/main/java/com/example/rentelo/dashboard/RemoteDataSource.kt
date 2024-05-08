@@ -1,7 +1,7 @@
 package com.example.rentelo.dashboard
 
+import com.example.rentelo.dashboard.featured.FeaturedRent
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 

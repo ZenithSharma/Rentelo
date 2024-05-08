@@ -1,4 +1,4 @@
-package com.example.rentelo.dashboard
+package com.example.rentelo.dashboard.featured
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
