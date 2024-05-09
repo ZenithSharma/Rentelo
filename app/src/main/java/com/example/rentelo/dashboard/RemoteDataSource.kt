@@ -26,6 +26,10 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
     }
 
     fun getNearByRentListFromAPI():Flow<Result<List<NearBy>>> {
-        TODO("Not yet implemented")
+        return flow {
+            emit(Result.success(apiService.getNearByRentList()))
+        }.catch {
+            emit(Result.failure(RuntimeException("Something went wrong")))
+        }
     }
 }
