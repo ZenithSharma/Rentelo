@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
 
-class NearByViewModelFactory @Inject constructor(): ViewModelProvider.Factory {
+class NearByViewModelFactory @Inject constructor(private val repository: NearByRentListRepository): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return NearByViewModel() as T
+        return NearByViewModel(repository) as T
     }
 }

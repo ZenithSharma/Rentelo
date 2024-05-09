@@ -1,9 +1,14 @@
 package com.example.rentelo.dashboard.nearby
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
-class NearByViewModel : ViewModel() {
+class NearByViewModel(private val repository: NearByRentListRepository) : ViewModel() {
 
-    val nearByRent = MutableLiveData<Result<List<NearBy>>>()
+    val nearByRent = liveData {
+        emitSource(repository.getNearByRentListFromRemoteDataSource().asLiveData())
+    }
 }
