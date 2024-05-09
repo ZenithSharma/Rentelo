@@ -9,6 +9,7 @@ import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
@@ -42,8 +43,9 @@ class CollectionRemoteDataSourceShould : BaseUnitTest() {
     }
 
     private fun mockSuccessfulCase(): RemoteDataSource {
-        whenever(api.getCollectionList()).thenReturn(expected)
+        runBlocking {
+            whenever(api.getCollectionList()).thenReturn(expected)
+        }
         return RemoteDataSource(api)
     }
-
 }

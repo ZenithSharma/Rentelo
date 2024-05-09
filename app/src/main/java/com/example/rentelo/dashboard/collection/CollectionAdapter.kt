@@ -31,7 +31,7 @@ class CollectionAdapter :
         holder.bind(item)
     }
 
-    class ComparatorDiffUtils() : DiffUtil.ItemCallback<CollectionRent>() {
+    class ComparatorDiffUtils : DiffUtil.ItemCallback<CollectionRent>() {
         override fun areItemsTheSame(oldItem: CollectionRent, newItem: CollectionRent): Boolean {
             return oldItem.id == newItem.id
         }

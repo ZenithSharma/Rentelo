@@ -9,5 +9,5 @@ interface ApiService {
     @GET("featured-rent")
     suspend fun getFeaturedRentList(): List<FeaturedRent>
     @GET("collection")
-    fun getCollectionList(): List<CollectionRent>
+    suspend fun getCollectionList(): List<CollectionRent>
 }
