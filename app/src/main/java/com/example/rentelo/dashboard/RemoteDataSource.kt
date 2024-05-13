@@ -2,6 +2,7 @@ package com.example.rentelo.dashboard
 
 import com.example.rentelo.dashboard.collection.CollectionRent
 import com.example.rentelo.dashboard.featured.FeaturedRent
+import com.example.rentelo.dashboard.nearby.NearBy
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -19,6 +20,14 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
     fun getCollectionRentListFromAPI(): Flow<Result<List<CollectionRent>>> {
         return flow {
             emit(Result.success(apiService.getCollectionList()))
+        }.catch {
+            emit(Result.failure(RuntimeException("Something went wrong")))
+        }
+    }
+
+    fun getNearByRentListFromAPI():Flow<Result<List<NearBy>>> {
+        return flow {
+            emit(Result.success(apiService.getNearByRentList()))
         }.catch {
             emit(Result.failure(RuntimeException("Something went wrong")))
         }
