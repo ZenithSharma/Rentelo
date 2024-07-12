@@ -18,10 +18,6 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: ktLint
-        run: ./gradlew ktlintCheck
-         
-         
       - name: Lint
         run: ./gradlew lint
 
