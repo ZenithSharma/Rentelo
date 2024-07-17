@@ -2,18 +2,33 @@ package com.example.rentelo
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 abstract class BaseUITest {
+
+
     val mActivityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
         @Rule get
+
+    @Before
+    fun setup() {
+        IdlingRegistry.getInstance().register(idlingResource)
+    }
+
+    @After
+    fun tearDown() {
+        IdlingRegistry.getInstance().unregister(idlingResource)
+    }
 
     //Utility Method
     fun nthChildOf(parentMatcher: Matcher<View>, childPosition: Int): Matcher<View> {

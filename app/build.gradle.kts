@@ -1,8 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id ("dagger.hilt.android.plugin")
-    id ("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
 }
 
 android {
@@ -53,7 +53,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     //Glide
-    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    implementation("com.github.bumptech.glide:glide:4.15.1")
     testImplementation("junit:junit:4.13.2")
     //Hilt
     implementation("com.google.dagger:hilt-android:2.48.1")
@@ -65,11 +65,41 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation("com.squareup.okhttp3:okhttp")
 
+
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
     testImplementation("org.mockito:mockito-inline:5.2.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+
+//    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+//    androidTestImplementation("com.jakewharton.espresso:okhttp3-idling-resource:1.0.0")
+//    implementation("androidx.test.espresso:espresso-idling-resource:3.5.1")
+
+//    implementation ("com.android.support.test.espresso.idling:idling-concurrent:3.0.2")
+    implementation ("com.jakewharton.espresso:okhttp3-idling-resource:1.0.0")
+
+
+    implementation ("com.android.support.test.espresso.idling:idling-concurrent:3.0.1")
+//    testImplementation ("com.jakewharton.espresso:okhttp3-idling-resource:1.0.0") {
+//        exclude group: 'support-annotations'
+//    }
+//
+//    debugImplementation ("com.android.support.test.espresso.idling:idling-concurrent:3.0.1")
+//    debugImplementation ("com.jakewharton.espresso:okhttp3-idling-resource:1.0.0") {
+//        exclude group: 'support-annotations'
+//    }
+
+//    androidTestImplementation ("androidx.test.espresso.idling:idling-concurrent:3.5.1")
+//
+//    // The following Espresso dependency can be either "implementation",
+//    // or "androidTestImplementation", depending on whether you want the
+//    // dependency to appear on your APK’"s compile classpath or the test APK
+//    // classpath.
+//    androidTestImplementation ("androidx.test.espresso:espresso-idling-resource:3.5.1")
+
+
     androidTestImplementation("com.adevinta.android:barista:4.2.0")
+
 
     //Coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
