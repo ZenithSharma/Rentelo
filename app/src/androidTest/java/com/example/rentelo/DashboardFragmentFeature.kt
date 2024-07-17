@@ -18,6 +18,8 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class DashboardFragmentFeature : BaseUITest() {
+
+
     @Test
     fun displayBachelorFriendlySection() {
         onView(
@@ -77,7 +79,6 @@ class DashboardFragmentFeature : BaseUITest() {
     @Test
     fun displayListOfFeaturedRentList() {
 
-        Thread.sleep(4000)
         assertRecyclerViewItemCount(R.id.featured_rent_list, 5)
 
         onView(
@@ -117,7 +118,6 @@ class DashboardFragmentFeature : BaseUITest() {
     @Test
     fun displayListOfCollectionRentList() {
 
-        Thread.sleep(4000)
         assertRecyclerViewItemCount(R.id.collection_rent_list, 4)
 
         onView(
@@ -142,7 +142,7 @@ class DashboardFragmentFeature : BaseUITest() {
 
     @Test
     fun displayListOfNearByRentList() {
-        Thread.sleep(4000)
+
         assertRecyclerViewItemCount(R.id.near_by_rent_list, 5)
 
         onView(
