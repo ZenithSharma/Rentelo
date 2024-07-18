@@ -19,7 +19,14 @@ jobs:
           distribution: 'adopt'
           
       - name: Run unit tests
-        run: ./gradlew test
+        run: ./gradlew testDebugUnitTest
+
+      - name: Upload Test Reports Folder
+        uses: actions/upload-artifact@v2
+        if: ${{ always() }} # IMPORTANT: Upload reports regardless of status
+        with:
+          name: reports
+          path: app/build/test-results
         
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
