@@ -19,13 +19,27 @@ jobs:
           distribution: 'adopt'
           
       - name: Run unit tests
-        run: ./gradlew test
+        run: ./gradlew testDebugUnitTest
+
+      - name: Unit test report
+        uses: asadmansr/android-test-report-action@v1.2.0
+        if: ${{ always() }}
         
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
 
       - name: Build with gradle
         run: ./gradlew build
+
+      - name: Cache Gradle files
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
 
       - name: Upload a build artifect
         uses: actions/upload-artifact@v4.3.4
