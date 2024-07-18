@@ -17,6 +17,8 @@ class CollectionRentViewModelShould : BaseUnitTest() {
     private val expected = Result.success(collectionRent)
     private val exception = RuntimeException("Something went wrong")
 
+
+
     @Test
     fun getCollectionListFromRepository() = runTest {
         val viewModel = mockSuccessfulCase()
