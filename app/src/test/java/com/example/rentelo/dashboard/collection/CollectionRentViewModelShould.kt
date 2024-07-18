@@ -19,6 +19,8 @@ class CollectionRentViewModelShould : BaseUnitTest() {
 
 
 
+
+
     @Test
     fun getCollectionListFromRepository() = runTest {
         val viewModel = mockSuccessfulCase()
