@@ -24,6 +24,7 @@ jobs:
         uses: actions/setup-java@v4.2.1
         with:
           java-version: '17'  
+          distribution: 'temurin'
       - name: Make gradle executable
         run: chmod +x ./gradlew
       - name: Run lint
@@ -78,6 +79,7 @@ jobs:
         uses: actions/setup-java@v4.2.1
         with:
           java-version: '17'
+          distribution: 'temurin'
       - name: SonarCloud scan
         run: './gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}'
         env:
@@ -94,6 +96,7 @@ jobs:
         uses: actions/setup-java@v4.2.1
         with:
           jva-version: '17'
+          distribution: 'temurin'
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace
       - name: Upload APK
