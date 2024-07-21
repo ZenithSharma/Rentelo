@@ -42,6 +42,11 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4.1.7
+      - name: Setup JDK
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: '17'  
+          distribution: 'temurin'   
       - name: Run unit test
         run: ./gradlew test
       - name: Upload test report
