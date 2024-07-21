@@ -78,12 +78,11 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2.32.0
         with:
           api-level: 29
-          target: default
-          arch: x86
+          target: google_apis
+          arch: x86_64
           profile: default
           emulator-options: -no-snapshot-load -no-window -gpu swiftshader_indirect
           disable-animations: true
-          script: adb shell getprop sys.boot_completed
   
       - name: Wait for emulator to fully boot
         run: |
