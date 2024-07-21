@@ -62,46 +62,18 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4.1.7
-        
       - name: Setup JDK
         uses: actions/setup-java@v4.2.1
         with:
           java-version: '17'  
           distribution: 'temurin'
-          
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v2
-        with:
-          api-level: 29     
 
-      # - name: Run espresso tests
-      #   uses: reactivecircus/android-emulator-runner@v2
-      #   with:
-      #     api-level: 29
-      #     script: ./gradlew connectedCheck
-
-      - name: Start Android Emulator
-        uses: reactivecircus/android-emulator-runner@v2.32.0
+      - name: Run espresso tests
+        uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          target: google_apis_playstore
-          arch: x86_64
-          profile: Nexus 6
-          emulator-options: -no-snapshot-load -no-window -gpu swiftshader_indirect
-          disable-animations: true
-          script: adb shell getprop sys.boot_completed
-  
-      # - name: Wait for emulator to fully boot
-      #   run: |
-      #     adb wait-for-device
-      #     adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
-  
-      - name: Verify Emulator is running
-        run: adb devices
-  
-      - name: Run instrumentation tests
-        run: ./gradlew connectedAndroidTest 
-      
+          script: ./gradlew connectedCheck
+
       - name: Upload test report
         uses: actions/upload-artifact@v2
         with:
