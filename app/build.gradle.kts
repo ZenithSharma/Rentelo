@@ -97,6 +97,8 @@ dependencies {
 //    // classpath.
 //    androidTestImplementation ("androidx.test.espresso:espresso-idling-resource:3.5.1")
 
+    implementation("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7.1")
+
 
     androidTestImplementation("com.adevinta.android:barista:4.2.0")
 
