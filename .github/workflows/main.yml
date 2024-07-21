@@ -68,36 +68,12 @@ jobs:
           java-version: '17'  
           distribution: 'temurin'
 
-      # - name: Run espresso tests
-      #   uses: reactivecircus/android-emulator-runner@v2
-      #   with:
-      #     api-level: 29
-      #     script: ./gradlew connectedCheck
-
-
-      - name: Start Android Emulator
-        uses: reactivecircus/android-emulator-runner@v2.32.0
+      - name: Run espresso tests
+        uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
           script: ./gradlew connectedCheck
-          target: default
-          arch: x86
-          profile: default
-          emulator-options: -no-snapshot-load
-          disable-animations: true
-  
-      - name: Wait for emulator to fully boot
-        run: |
-          adb wait-for-device
-          adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
-
-      - name: Verify Emulator is running
-        run: adb devices
-
-      - name: Run instrumentation tests
-        run: ./gradlew connectedAndroidTest
-
-        
+      
       - name: Upload test report
         uses: actions/upload-artifact@v2
         with:
