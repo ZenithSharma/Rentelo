@@ -62,11 +62,17 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4.1.7
+        
       - name: Setup JDK
         uses: actions/setup-java@v4.2.1
         with:
           java-version: '17'  
           distribution: 'temurin'
+          
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v2
+        with:
+          api-level: 29     
 
       # - name: Run espresso tests
       #   uses: reactivecircus/android-emulator-runner@v2
