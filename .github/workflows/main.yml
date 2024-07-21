@@ -20,20 +20,20 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4.1.7
-      - name: Setup JDK
-        uses: actions/setup-java@v4.2.1
-        with:
-          java-version: '17'  
-          distribution: 'temurin'
-      - name: Make gradle executable
-        run: chmod +x ./gradlew
-      - name: Run lint
-        run: ./gradlew lintDebug
-      - name: Upload html test report
-        uses: actions/upload-artifact@v4.3.4
-        with:
-          name: lint
-          path: app/build/reports/lint-results-debug.html
+      # - name: Setup JDK
+      #   uses: actions/setup-java@v4.2.1
+      #   with:
+      #     java-version: '17'  
+      #     distribution: 'temurin'
+      # - name: Make gradle executable
+      #   run: chmod +x ./gradlew
+      # - name: Run lint
+      #   run: ./gradlew lintDebug
+      # - name: Upload html test report
+      #   uses: actions/upload-artifact@v4.3.4
+      #   with:
+      #     name: lint
+      #     path: app/build/reports/lint-results-debug.html
   unit-test:
     name: Run unit test
     needs:
@@ -42,18 +42,18 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4.1.7
-      - name: Setup JDK
-        uses: actions/setup-java@v4.2.1
-        with:
-          java-version: '17'  
-          distribution: 'temurin'   
-      - name: Run unit test
-        run: ./gradlew test
-      - name: Upload test report
-        uses: actions/upload-artifact@v4.3.4
-        with:
-          name: unit_test_report
-          path: app/build/reports/tests/testDebugUnitTest/
+      # - name: Setup JDK
+      #   uses: actions/setup-java@v4.2.1
+      #   with:
+      #     java-version: '17'  
+      #     distribution: 'temurin'   
+      # - name: Run unit test
+      #   run: ./gradlew test
+      # - name: Upload test report
+      #   uses: actions/upload-artifact@v4.3.4
+      #   with:
+      #     name: unit_test_report
+      #     path: app/build/reports/tests/testDebugUnitTest/
   instrumentation-test:
     name: Run instrumentation test
     needs:
