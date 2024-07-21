@@ -85,10 +85,10 @@ jobs:
           disable-animations: true
           script: adb shell getprop sys.boot_completed
   
-      - name: Wait for emulator to fully boot
-        run: |
-          adb wait-for-device
-          adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
+      # - name: Wait for emulator to fully boot
+      #   run: |
+      #     adb wait-for-device
+      #     adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
   
       - name: Verify Emulator is running
         run: adb devices
