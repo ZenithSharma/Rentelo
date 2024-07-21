@@ -1,34 +1,99 @@
 name: CI Pipeline
-
-on:
+'on':
+  push:
+    branches:
+      - main
   pull_request:
-    branches: [main]
-    
-
+    branches:
+      - main
 jobs:
   start:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4.1.7
-        
-      - name: Setup JDK
-        uses: actions/setup-java@v4.2.1
-        with: 
-          java-version: '17'
-          distribution: 'adopt'
-          
-      - name: Run unit tests
-        run: ./gradlew testDebugUnitTest
-        
-      - name: Grant execute permission for gradlew
+  lint:
+    name: Perform lint check
+    needs:
+      - start
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4.1.7
+      - name: Make gradle executable
         run: chmod +x ./gradlew
-
-      - name: Build with gradle
-        run: ./gradlew build
-
-      - name: Upload a build artifect
+      - name: Run lint
+        run: ./gradlew debuglint
+      - name: Upload html test report
         uses: actions/upload-artifact@v4.3.4
         with:
-          name: AndroidCICD.apk
+          name: lint
+          path: app/build/reports/lint-results-debug.html
+  unit-test:
+    name: Run unit test
+    needs:
+      - lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4.1.7
+      - name: Run unit test
+        run: ./gradlew test
+      - name: Upload test report
+        uses: actions/upload-artifact@v4.3.4
+        with:
+          name: unit_test_report
+          path: app/build/reports/test/testDebugUnitTest/
+  instrumentation-test:
+    name: Run instrumentation test
+    needs:
+      - unit-test
+    runs-on: macos-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/artifact@v4.3.4
+      - name: Run espresso test
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedCheck
+      - name: Upload Instrumentation Test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: instrumentation_test_report
+          path: app/build/reports/androidTests/connected
+  static-code-analysis:
+    name: Perform static code analysis
+    needs:
+      - instrumentation-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/artifact@v4.3.4
+      - name: Setup JDK
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: '17'
+      - name: SonarCloud scan
+        run: './gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}'
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+  debug-apk:
+    name: Generate debug APK
+    needs:
+      - static-code-analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/artifact@v4.3.4
+      - name: Setup JDK
+        uses: actions/setup-java@v4.2.1
+        with:
+          jva-version: '17'
+      - name: Build debug APK
+        run: ./gradlew assembleDebug --stacktrace
+      - name: Upload APK
+        uses: actions/upload-artifact@v4.3.4
+        with:
+          name: sample-app.apk
           path: app/build/outputs/apk/debug/app-debug.apk
