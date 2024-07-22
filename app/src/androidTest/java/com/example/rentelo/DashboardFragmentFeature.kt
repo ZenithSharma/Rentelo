@@ -115,62 +115,63 @@ class DashboardFragmentFeature : BaseUITest() {
         assertDisplayed("Collection")
     }
 
-//    @Test
-//    fun displayListOfCollectionRentList() {
-//
-//        assertRecyclerViewItemCount(R.id.collection_rent_list, 4)
-//
-//        onView(
-//            allOf(
-//                withId(R.id.collection_rent_title),
-//                isDescendantOfA(nthChildOf(withId(R.id.collection_rent_list), 0))
-//            )
-//        ).check(matches(withText("Cozy Living"))).check(matches(isDisplayed()))
-//
-//        onView(
-//            allOf(
-//                withId(R.id.collection_rent_title),
-//                isDescendantOfA(nthChildOf(withId(R.id.collection_rent_list), 1))
-//            )
-//        ).check(matches(withText("Paying Guest"))).check(matches(isDisplayed()))
-//    }
-//
-//    @Test
-//    fun displayNearBySection() {
-//        assertDisplayed("Near By")
-//    }
+    @Test
+    fun displayListOfCollectionRentList() {
+        Thread.sleep(400)
+        assertRecyclerViewItemCount(R.id.collection_rent_list, 4)
 
-//    @Test
-//    fun displayListOfNearByRentList() {
-//
-//        assertRecyclerViewItemCount(R.id.near_by_rent_list, 5)
-//
-//        onView(
-//            allOf(
-//                withId(R.id.near_by_rent_location),
-//                isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 0))
-//            )
-//        ).check(matches(withText("Balaju, Bhaktapur"))).check(matches(isDisplayed()))
-//
-//        onView(
-//            allOf(
-//                withId(R.id.near_by_rent_price),
-//                isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 0))
-//            )
-//        ).check(matches(withText("2500"))).check(matches(isDisplayed()))
-//
-//        onView(
-//            allOf(
-//                withId(R.id.near_by_rent_location),
-//                isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 1))
-//            )
-//        ).check(matches(withText("Sundhara, Kathmandu"))).check(matches(isDisplayed()))
-//
-//        onView(
-//            allOf(
-//                withId(R.id.near_by_rent_price),
-//                isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 0))
-//            )
-//        ).check(matches(withText("2200"))).check(matches(isDisplayed()))
-//    }
+        onView(
+            allOf(
+                withId(R.id.collection_rent_title),
+                isDescendantOfA(nthChildOf(withId(R.id.collection_rent_list), 0))
+            )
+        ).check(matches(withText("Cozy Living"))).check(matches(isDisplayed()))
+
+        onView(
+            allOf(
+                withId(R.id.collection_rent_title),
+                isDescendantOfA(nthChildOf(withId(R.id.collection_rent_list), 1))
+            )
+        ).check(matches(withText("Paying Guest"))).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun displayNearBySection() {
+        Thread.sleep(400)
+        assertDisplayed("Near By")
+    }
+
+    @Test
+    fun displayListOfNearByRentList() {
+        Thread.sleep(400)
+        assertRecyclerViewItemCount(R.id.near_by_rent_list, 5)
+
+        onView(
+            allOf(
+                withId(R.id.near_by_rent_location),
+                isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 0))
+            )
+        ).check(matches(withText("Balaju, Bhaktapur"))).check(matches(isDisplayed()))
+
+        onView(
+            allOf(
+                withId(R.id.near_by_rent_price),
+                isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 0))
+            )
+        ).check(matches(withText("2500"))).check(matches(isDisplayed()))
+
+        onView(
+            allOf(
+                withId(R.id.near_by_rent_location),
+                isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 1))
+            )
+        ).check(matches(withText("Sundhara, Kathmandu"))).check(matches(isDisplayed()))
+
+        onView(
+            allOf(
+                withId(R.id.near_by_rent_price),
+                isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 0))
+            )
+        ).check(matches(withText("2200"))).check(matches(isDisplayed()))
+    }
 }
