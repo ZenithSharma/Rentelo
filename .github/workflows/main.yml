@@ -86,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
-        uses: actions/artifact@v4.3.4
+        uses: actions/checkout@v4.3.4
       - name: Setup JDK
         uses: actions/setup-java@v4.2.1
         with:
@@ -103,7 +103,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
-        uses: actions/artifact@v4.3.4
+        uses: actions/checkout@v4.3.4
       - name: Setup JDK
         uses: actions/setup-java@v4.2.1
         with:
