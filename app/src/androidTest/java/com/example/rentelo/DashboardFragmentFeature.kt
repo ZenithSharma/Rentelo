@@ -1,6 +1,7 @@
 package com.example.rentelo
 
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -117,6 +118,7 @@ class DashboardFragmentFeature : BaseUITest() {
 
     @Test
     fun displayListOfCollectionRentList() {
+        IdlingRegistry.getInstance().unregister(idlingResource)
         assertRecyclerViewItemCount(R.id.collection_rent_list, 4)
 
         onView(
@@ -136,11 +138,13 @@ class DashboardFragmentFeature : BaseUITest() {
 
     @Test
     fun displayNearBySection() {
+        IdlingRegistry.getInstance().unregister(idlingResource)
         assertDisplayed("Near By")
     }
 
     @Test
     fun displayListOfNearByRentList() {
+        IdlingRegistry.getInstance().unregister(idlingResource)
         assertRecyclerViewItemCount(R.id.near_by_rent_list, 5)
 
         onView(
