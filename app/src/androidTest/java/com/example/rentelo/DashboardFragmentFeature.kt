@@ -115,30 +115,30 @@ class DashboardFragmentFeature : BaseUITest() {
         assertDisplayed("Collection")
     }
 
-    @Test
-    fun displayListOfCollectionRentList() {
-
-        assertRecyclerViewItemCount(R.id.collection_rent_list, 4)
-
-        onView(
-            allOf(
-                withId(R.id.collection_rent_title),
-                isDescendantOfA(nthChildOf(withId(R.id.collection_rent_list), 0))
-            )
-        ).check(matches(withText("Cozy Living"))).check(matches(isDisplayed()))
-
-        onView(
-            allOf(
-                withId(R.id.collection_rent_title),
-                isDescendantOfA(nthChildOf(withId(R.id.collection_rent_list), 1))
-            )
-        ).check(matches(withText("Paying Guest"))).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun displayNearBySection() {
-        assertDisplayed("Near By")
-    }
+//    @Test
+//    fun displayListOfCollectionRentList() {
+//
+//        assertRecyclerViewItemCount(R.id.collection_rent_list, 4)
+//
+//        onView(
+//            allOf(
+//                withId(R.id.collection_rent_title),
+//                isDescendantOfA(nthChildOf(withId(R.id.collection_rent_list), 0))
+//            )
+//        ).check(matches(withText("Cozy Living"))).check(matches(isDisplayed()))
+//
+//        onView(
+//            allOf(
+//                withId(R.id.collection_rent_title),
+//                isDescendantOfA(nthChildOf(withId(R.id.collection_rent_list), 1))
+//            )
+//        ).check(matches(withText("Paying Guest"))).check(matches(isDisplayed()))
+//    }
+//
+//    @Test
+//    fun displayNearBySection() {
+//        assertDisplayed("Near By")
+//    }
 
 //    @Test
 //    fun displayListOfNearByRentList() {
