@@ -23,6 +23,8 @@ class FeaturedRentListModule {
     fun providesRetrofit(): Retrofit {
         return Retrofit.Builder().baseUrl("https://api.mockfly.dev/mocks/75e3fd7b-3836-4ab0-a013-911ca1123f00/").client(client)
             .addConverterFactory(GsonConverterFactory.create()).build()
+
+
     }
 
 
