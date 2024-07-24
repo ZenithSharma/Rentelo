@@ -142,6 +142,10 @@ class DashboardFragmentFeature : BaseUITest() {
         assertDisplayed("Near By")
     }
 
+
+
+
+
     @Test
     fun displayListOfNearByRentList() {
         assertRecyclerViewItemCount(R.id.near_by_rent_list, 5)
