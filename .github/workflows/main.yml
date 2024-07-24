@@ -59,23 +59,62 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4.1.7
+        
       - name: Setup JDK
         uses: actions/setup-java@v4.2.1
         with:
           java-version: '17'  
           distribution: 'temurin'
 
-      - name: Run espresso tests
-        uses: reactivecircus/android-emulator-runner@v2
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v2
         with:
-          api-level: 29
-          script: ./gradlew connectedCheck
+          api-level: 30
+          target: default
+          arch: x86
+          emulator-options: -no-window -no-audio
 
+      - name: Install required tools
+        run: |
+          sdkmanager "system-images;android-30;default;x86" "platform-tools" "platforms;android-30"
+
+      - name: Create AVD
+        run: |
+          echo "no" | avdmanager create avd -n test -k "system-images;android-30;default;x86" -d "pixel_3a" --force
+
+      - name: Start emulator
+        run: |
+          $ANDROID_HOME/emulator/emulator -avd test -no-window -no-audio -gpu swiftshader_indirect &
+          adb wait-for-device
+          adb shell input keyevent 82 &
+          timeout-minutes: 2
+
+      - name: Wait for emulator to boot
+        run: |
+          adb wait-for-device
+          adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
+          adb shell 'while [[ -z $(getprop init.svc.bootanim) ]]; do sleep 1; done;'
+          adb shell 'while [[ $(getprop init.svc.bootanim) != "stopped" ]]; do sleep 1; done;'
+   
+
+      # - name: Run espresso tests
+      #   uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: 29
+      #     script: ./gradlew connectedCheck
+
+      - name: Run instrumentation tests
+        run: ./gradlew connectedAndroidTest
+
+      - name: Stop emulator
+        run: adb emu kill
+        
       - name: Upload test report
         uses: actions/upload-artifact@v2
         with:
           name: instrumentation_test_report
           path: app/build/reports/androidTests/connected/
+          
   static-code-analysis:
     name: Perform static code analysis
     needs:
