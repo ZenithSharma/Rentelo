@@ -13,6 +13,7 @@ import com.adevinta.android.barista.assertion.BaristaRecyclerViewAssertions.asse
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.adevinta.android.barista.internal.matcher.DrawableMatcher.Companion.withDrawable
 import org.hamcrest.CoreMatchers.allOf
+import org.hamcrest.CoreMatchers.not
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
@@ -21,8 +22,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class DashboardFragmentFeature : BaseUITest() {
-    val mActivityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
-        @Rule get
 
     @Test
     fun displayBachelorFriendlySection() {
@@ -121,7 +120,6 @@ class DashboardFragmentFeature : BaseUITest() {
 
     @Test
     fun displayListOfCollectionRentList() {
-        IdlingRegistry.getInstance().unregister(idlingResource)
         assertRecyclerViewItemCount(R.id.collection_rent_list, 4)
 
         onView(
@@ -141,14 +139,11 @@ class DashboardFragmentFeature : BaseUITest() {
 
     @Test
     fun displayNearBySection() {
-        mActivityScenarioRule.scenario.onActivity {
-            assertDisplayed("Near By")
-        }
+        assertDisplayed("Near By")
     }
 
     @Test
     fun displayListOfNearByRentList() {
-        IdlingRegistry.getInstance().unregister(idlingResource)
         assertRecyclerViewItemCount(R.id.near_by_rent_list, 5)
 
         onView(
@@ -163,7 +158,7 @@ class DashboardFragmentFeature : BaseUITest() {
                 withId(R.id.near_by_rent_price),
                 isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 0))
             )
-        ).check(matches(withText("2500"))).check(matches(isDisplayed()))
+        ).check(matches(withText("Rs 2500 /Month"))).check(matches(isDisplayed()))
 
         onView(
             allOf(
@@ -175,8 +170,8 @@ class DashboardFragmentFeature : BaseUITest() {
         onView(
             allOf(
                 withId(R.id.near_by_rent_price),
-                isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 0))
+                isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 1))
             )
-        ).check(matches(withText("2200"))).check(matches(isDisplayed()))
+        ).check(matches(withText("Rs 2200 /Month"))).check(matches(isDisplayed()))
     }
 }
