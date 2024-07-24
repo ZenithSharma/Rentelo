@@ -7,19 +7,22 @@ import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.adevinta.android.barista.assertion.BaristaRecyclerViewAssertions.assertRecyclerViewItemCount
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.adevinta.android.barista.internal.matcher.DrawableMatcher.Companion.withDrawable
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.Assert.*
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 
 @RunWith(AndroidJUnit4::class)
 class DashboardFragmentFeature : BaseUITest() {
-
+    val mActivityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
+        @Rule get
 
     @Test
     fun displayBachelorFriendlySection() {
@@ -138,8 +141,9 @@ class DashboardFragmentFeature : BaseUITest() {
 
     @Test
     fun displayNearBySection() {
-        IdlingRegistry.getInstance().unregister(idlingResource)
-        assertDisplayed("Near By")
+        mActivityScenarioRule.scenario.onActivity {
+            assertDisplayed("Near By")
+        }
     }
 
     @Test

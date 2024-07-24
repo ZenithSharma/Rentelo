@@ -17,8 +17,7 @@ import org.junit.runner.RunWith
 abstract class BaseUITest {
 
 
-    val mActivityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
-        @Rule get
+
 
     @Before
     fun setup() {
