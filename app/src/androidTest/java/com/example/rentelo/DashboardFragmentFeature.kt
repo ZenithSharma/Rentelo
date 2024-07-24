@@ -1,10 +1,17 @@
 package com.example.rentelo
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.ViewAction
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -120,6 +127,7 @@ class DashboardFragmentFeature : BaseUITest() {
 
     @Test
     fun displayListOfCollectionRentList() {
+        onView(withId(R.id.near_by_rent_list)).perform(ViewActions.scrollTo())
         assertRecyclerViewItemCount(R.id.collection_rent_list, 4)
 
         onView(
@@ -139,43 +147,43 @@ class DashboardFragmentFeature : BaseUITest() {
 
     @Test
     fun displayNearBySection() {
+        onView(withId(R.id.near_by_rent_list)).perform(ViewActions.scrollTo())
         assertDisplayed("Near By")
     }
 
 
-
-
-
     @Test
     fun displayListOfNearByRentList() {
-//        assertRecyclerViewItemCount(R.id.near_by_rent_list, 5)
 
+        onView(withId(R.id.near_by_rent_list)).perform(ViewActions.scrollTo())
+
+        assertRecyclerViewItemCount(R.id.near_by_rent_list, 5)
         onView(
             allOf(
                 withId(R.id.near_by_rent_location),
                 isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 0))
             )
-        ).check(matches(withText("Balaju, Bhaktapur"))).check(matches(not( isDisplayed())))
+        ).check(matches(withText("Balaju, Bhaktapur"))).check(matches(isDisplayed()))
 
         onView(
             allOf(
                 withId(R.id.near_by_rent_price),
                 isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 0))
             )
-        ).check(matches(withText("Rs 2500 /Month"))).check(matches(not( isDisplayed())))
+        ).check(matches(withText("Rs 2500 /Month"))).check(matches(isDisplayed()))
 
         onView(
             allOf(
                 withId(R.id.near_by_rent_location),
                 isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 1))
             )
-        ).check(matches(withText("Sundhara, Kathmandu"))).check(matches(not( isDisplayed())))
+        ).check(matches(withText("Sundhara, Kathmandu"))).check(matches(isDisplayed()))
 
         onView(
             allOf(
                 withId(R.id.near_by_rent_price),
                 isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 1))
             )
-        ).check(matches(withText("Rs 2200 /Month"))).check(matches(not( isDisplayed())))
+        ).check(matches(withText("Rs 2200 /Month"))).check(matches(isDisplayed()))
     }
 }
