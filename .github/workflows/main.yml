@@ -72,6 +72,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
+          profile: Pixel_3a_API_29
           script: ./gradlew connectedCheck
 
       - name: Upload test report
