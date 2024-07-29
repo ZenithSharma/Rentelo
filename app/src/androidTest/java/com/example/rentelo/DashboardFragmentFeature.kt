@@ -127,7 +127,7 @@ class DashboardFragmentFeature : BaseUITest() {
 
     @Test
     fun displayListOfCollectionRentList() {
-        onView(withId(R.id.near_by_rent_list)).perform(ViewActions.scrollTo())
+        onView(withId(R.id.collection_rent_list)).perform(ViewActions.scrollTo())
         assertRecyclerViewItemCount(R.id.collection_rent_list, 4)
 
         onView(
@@ -150,7 +150,6 @@ class DashboardFragmentFeature : BaseUITest() {
         onView(withId(R.id.near_by_rent_list)).perform(ViewActions.scrollTo())
         assertDisplayed("Near By")
     }
-
 
     @Test
     fun displayListOfNearByRentList() {

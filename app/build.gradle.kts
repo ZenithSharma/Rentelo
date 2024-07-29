@@ -70,34 +70,13 @@ dependencies {
     testImplementation("org.mockito:mockito-inline:5.2.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
 
-
-//    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-//    androidTestImplementation("com.jakewharton.espresso:okhttp3-idling-resource:1.0.0")
-//    implementation("androidx.test.espresso:espresso-idling-resource:3.5.1")
-
-//    implementation ("com.android.support.test.espresso.idling:idling-concurrent:3.0.2")
     implementation ("com.jakewharton.espresso:okhttp3-idling-resource:1.0.0")
 
 
     implementation ("com.android.support.test.espresso.idling:idling-concurrent:3.0.1")
-//    testImplementation ("com.jakewharton.espresso:okhttp3-idling-resource:1.0.0") {
-//        exclude group: 'support-annotations'
-//    }
-//
-//    debugImplementation ("com.android.support.test.espresso.idling:idling-concurrent:3.0.1")
-//    debugImplementation ("com.jakewharton.espresso:okhttp3-idling-resource:1.0.0") {
-//        exclude group: 'support-annotations'
-//    }
 
-//    androidTestImplementation ("androidx.test.espresso.idling:idling-concurrent:3.5.1")
-//
-//    // The following Espresso dependency can be either "implementation",
-//    // or "androidTestImplementation", depending on whether you want the
-//    // dependency to appear on your APK’"s compile classpath or the test APK
-//    // classpath.
-//    androidTestImplementation ("androidx.test.espresso:espresso-idling-resource:3.5.1")
 
-//    implementation("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7.1")
+    implementation("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7.1")
 
 
     androidTestImplementation("com.adevinta.android:barista:4.2.0")
