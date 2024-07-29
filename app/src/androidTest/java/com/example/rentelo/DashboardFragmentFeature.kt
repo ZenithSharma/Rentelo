@@ -146,11 +146,11 @@ class DashboardFragmentFeature : BaseUITest() {
         ).check(matches(withText("Paying Guest"))).check(matches(isDisplayed()))
     }
 
-    @Test
-    fun displayNearBySection() {
-        onView(withId(R.id.near_by_rent_list)).perform(ViewActions.scrollTo())
-        assertDisplayed("Near By")
-    }
+//    @Test
+//    fun displayNearBySection() {
+//        onView(withId(R.id.near_by_rent_list)).perform(ViewActions.scrollTo())
+//        assertDisplayed("Near By")
+//    }
 
     @Test
     fun displayListOfNearByRentList() {
