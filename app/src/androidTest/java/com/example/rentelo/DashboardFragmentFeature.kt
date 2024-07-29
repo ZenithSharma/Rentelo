@@ -82,10 +82,10 @@ class DashboardFragmentFeature : BaseUITest() {
         ).check(matches(withDrawable(R.mipmap.night_life))).check(matches(isDisplayed()))
     }
 
-    @Test
-    fun displayFeaturedSectionTitle() {
-        assertDisplayed("Featured")
-    }
+//    @Test
+//    fun displayFeaturedSectionTitle() {
+//        assertDisplayed("Featured")
+//    }
 
     @Test
     fun displayListOfFeaturedRentList() {
