@@ -31,9 +31,6 @@ import org.junit.runner.RunWith
 class DashboardFragmentFeature : BaseUITest() {
 
 
-
-
-
     @Test
     fun displayBachelorFriendlySection() {
         onView(
