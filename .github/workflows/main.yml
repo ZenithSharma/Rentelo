@@ -104,7 +104,7 @@ jobs:
       - name: Setup JDK
         uses: actions/setup-java@v4.2.1
         with:
-          jva-version: '17'
+          java-version: '17'
           distribution: 'temurin'
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace
