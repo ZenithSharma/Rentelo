@@ -90,7 +90,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: SonarCloud scan
-        run: './gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}'
+        run: './gradlew app:sonarqube -Dsonar.host.url=http://my.url -Dsonar.login=${{ secrets.SONAR_TOKEN }}'
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
   debug-apk:
