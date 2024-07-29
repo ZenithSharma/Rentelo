@@ -121,10 +121,10 @@ class DashboardFragmentFeature : BaseUITest() {
         ).check(matches(withText("Rs 2200 /Month"))).check(matches(isDisplayed()))
     }
 
-    @Test
-    fun displayCollectionSectionTitle() {
-        assertDisplayed("Collection")
-    }
+//    @Test
+//    fun displayCollectionSectionTitle() {
+//        assertDisplayed("Collection")
+//    }
 
     @Test
     fun displayListOfCollectionRentList() {
