@@ -6,15 +6,15 @@ plugins {
     id ("org.sonarqube") version "4.4.1.3373"
 }
 
-//sonar {
-//    properties {
-//        property("sonar.projectKey", "ZenithSharma_Rentelo")
-//        property("sonar.host.url", "https://sonarcloud.io/")
-//        property("sonar.organization", "ZenithSharma")
-//        property("sonar.projectName", "Rentelo")
-//        property("sonar.gradle.skipCompile", "true")
-//    }
-//}
+sonar {
+    properties {
+        property("sonar.projectKey", "zenithsharma_Rentelo")
+        property("sonar.host.url", "https://sonarcloud.io/")
+        property("sonar.organization", "zenithsharma")
+        property("sonar.projectName", "Rentelo")
+        property("sonar.gradle.skipCompile", "true")
+    }
+}
 
 android {
     namespace = "com.example.rentelo"
