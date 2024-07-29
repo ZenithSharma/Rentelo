@@ -8,7 +8,7 @@ plugins {
 
 sonar {
     properties {
-        property("sonar.projectKey", "zenithsharma_Rentelo")
+        property("sonar.projectKey", "ZenithSharma_Rentelo")
         property("sonar.host.url", "https://sonarcloud.io/")
         property("sonar.organization", "zenithsharma")
         property("sonar.projectName", "Rentelo")
