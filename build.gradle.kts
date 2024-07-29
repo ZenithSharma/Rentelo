@@ -5,5 +5,4 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.0" apply false
     kotlin("kapt") version "1.9.23"
     id ("com.google.dagger.hilt.android") version "2.48.1" apply false
-    id("org.sonarqube") version "4.4.1.3373"
 }

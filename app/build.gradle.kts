@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
-    id ("org.sonarqube")
+    id ("org.sonarqube") version "4.4.1.3373"
 }
 
 android {
