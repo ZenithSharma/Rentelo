@@ -10,7 +10,7 @@ sonar {
     properties {
         property("sonar.projectKey", "ZenithSharma_Rentelo")
         property("sonar.host.url", "https://sonarcloud.io/")
-        property("sonar.host.organization", "ZenithSharma")
+        property("sonar.organization", "ZenithSharma")
         property("sonar.projectName", "Rentelo")
         property("sonar.gradle.skipCompile", "true")
     }
