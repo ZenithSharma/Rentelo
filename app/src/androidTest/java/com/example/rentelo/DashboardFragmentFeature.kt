@@ -1,17 +1,28 @@
 package com.example.rentelo
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.ViewAction
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.adevinta.android.barista.assertion.BaristaRecyclerViewAssertions.assertRecyclerViewItemCount
 import com.adevinta.android.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.adevinta.android.barista.internal.matcher.DrawableMatcher.Companion.withDrawable
 import org.hamcrest.CoreMatchers.allOf
+import org.hamcrest.CoreMatchers.not
 import org.junit.Assert.*
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -117,7 +128,7 @@ class DashboardFragmentFeature : BaseUITest() {
 
     @Test
     fun displayListOfCollectionRentList() {
-
+        onView(withId(R.id.collection_rent_list)).perform(ViewActions.scrollTo())
         assertRecyclerViewItemCount(R.id.collection_rent_list, 4)
 
         onView(
@@ -137,14 +148,16 @@ class DashboardFragmentFeature : BaseUITest() {
 
     @Test
     fun displayNearBySection() {
+        onView(withId(R.id.near_by_rent_list)).perform(ViewActions.scrollTo())
         assertDisplayed("Near By")
     }
 
     @Test
     fun displayListOfNearByRentList() {
 
-        assertRecyclerViewItemCount(R.id.near_by_rent_list, 5)
+        onView(withId(R.id.near_by_rent_list)).perform(ViewActions.scrollTo())
 
+        assertRecyclerViewItemCount(R.id.near_by_rent_list, 5)
         onView(
             allOf(
                 withId(R.id.near_by_rent_location),
@@ -157,7 +170,7 @@ class DashboardFragmentFeature : BaseUITest() {
                 withId(R.id.near_by_rent_price),
                 isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 0))
             )
-        ).check(matches(withText("2500"))).check(matches(isDisplayed()))
+        ).check(matches(withText("Rs 2500 /Month"))).check(matches(isDisplayed()))
 
         onView(
             allOf(
@@ -169,8 +182,8 @@ class DashboardFragmentFeature : BaseUITest() {
         onView(
             allOf(
                 withId(R.id.near_by_rent_price),
-                isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 0))
+                isDescendantOfA(nthChildOf(withId(R.id.near_by_rent_list), 1))
             )
-        ).check(matches(withText("2200"))).check(matches(isDisplayed()))
+        ).check(matches(withText("Rs 2200 /Month"))).check(matches(isDisplayed()))
     }
 }

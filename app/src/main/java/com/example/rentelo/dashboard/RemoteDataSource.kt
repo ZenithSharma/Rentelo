@@ -1,5 +1,6 @@
 package com.example.rentelo.dashboard
 
+import com.example.rentelo.Constant.RuntimeException
 import com.example.rentelo.dashboard.collection.CollectionRent
 import com.example.rentelo.dashboard.featured.FeaturedRent
 import com.example.rentelo.dashboard.nearby.NearBy
@@ -13,7 +14,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         return flow {
             emit(Result.success(apiService.getFeaturedRentList()))
         }.catch {
-            emit(Result.failure(RuntimeException("Something went wrong")))
+            emit(Result.failure(RuntimeException(RuntimeException)))
         }
     }
 
@@ -21,7 +22,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         return flow {
             emit(Result.success(apiService.getCollectionList()))
         }.catch {
-            emit(Result.failure(RuntimeException("Something went wrong")))
+            emit(Result.failure(RuntimeException(RuntimeException)))
         }
     }
 
@@ -29,7 +30,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         return flow {
             emit(Result.success(apiService.getNearByRentList()))
         }.catch {
-            emit(Result.failure(RuntimeException("Something went wrong")))
+            emit(Result.failure(RuntimeException(RuntimeException)))
         }
     }
 }

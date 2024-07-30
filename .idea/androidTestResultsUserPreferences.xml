@@ -29,6 +29,21 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="-1325370625">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Nexus_6_API_28" value="120" />
+                  <entry key="Pixel_XL_API_28" value="120" />
+                  <entry key="Tests" value="360" />
+                  <entry key="samsung SM-M336BU" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-733866159">
           <value>
             <AndroidTestResultsTableState>

@@ -16,7 +16,6 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 abstract class BaseUITest {
 
-
     val mActivityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
         @Rule get
 
