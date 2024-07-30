@@ -48,22 +48,22 @@ class DashboardFragmentFeature : BaseUITest() {
         ).check(matches(withDrawable(R.mipmap.bachelor_friendly))).check(matches(isDisplayed()))
     }
 
-//    @Test
-//    fun displayOwnersPropertySection() {
-//        onView(
-//            allOf(
-//                withId(R.id.owners_property_label),
-//                isDescendantOfA(withId(R.id.layout_owners_property))
-//            )
-//        ).check(matches(withText("Owners Property"))).check(matches(isDisplayed()))
-//
-//        onView(
-//            allOf(
-//                withId(R.id.owners_property_icon),
-//                isDescendantOfA(withId(R.id.layout_owners_property))
-//            )
-//        ).check(matches(withDrawable(R.mipmap.owner_property))).check(matches(isDisplayed()))
-//    }
+    @Test
+    fun displayOwnersPropertySection() {
+        onView(
+            allOf(
+                withId(R.id.owners_property_label),
+                isDescendantOfA(withId(R.id.layout_owners_property))
+            )
+        ).check(matches(withText("Owners Property"))).check(matches(isDisplayed()))
+
+        onView(
+            allOf(
+                withId(R.id.owners_property_icon),
+                isDescendantOfA(withId(R.id.layout_owners_property))
+            )
+        ).check(matches(withDrawable(R.mipmap.owner_property))).check(matches(isDisplayed()))
+    }
 
     @Test
     fun displayGreatNightLifeSection() {
@@ -82,10 +82,10 @@ class DashboardFragmentFeature : BaseUITest() {
         ).check(matches(withDrawable(R.mipmap.night_life))).check(matches(isDisplayed()))
     }
 
-//    @Test
-//    fun displayFeaturedSectionTitle() {
-//        assertDisplayed("Featured")
-//    }
+    @Test
+    fun displayFeaturedSectionTitle() {
+        assertDisplayed("Featured")
+    }
 
     @Test
     fun displayListOfFeaturedRentList() {
@@ -121,10 +121,10 @@ class DashboardFragmentFeature : BaseUITest() {
         ).check(matches(withText("Rs 2200 /Month"))).check(matches(isDisplayed()))
     }
 
-//    @Test
-//    fun displayCollectionSectionTitle() {
-//        assertDisplayed("Collection")
-//    }
+    @Test
+    fun displayCollectionSectionTitle() {
+        assertDisplayed("Collection")
+    }
 
     @Test
     fun displayListOfCollectionRentList() {
@@ -146,11 +146,11 @@ class DashboardFragmentFeature : BaseUITest() {
         ).check(matches(withText("Paying Guest"))).check(matches(isDisplayed()))
     }
 
-//    @Test
-//    fun displayNearBySection() {
-//        onView(withId(R.id.near_by_rent_list)).perform(ViewActions.scrollTo())
-//        assertDisplayed("Near By")
-//    }
+    @Test
+    fun displayNearBySection() {
+        onView(withId(R.id.near_by_rent_list)).perform(ViewActions.scrollTo())
+        assertDisplayed("Near By")
+    }
 
     @Test
     fun displayListOfNearByRentList() {
