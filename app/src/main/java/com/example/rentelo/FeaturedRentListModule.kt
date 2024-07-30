@@ -1,5 +1,6 @@
 package com.example.rentelo
 
+import com.example.rentelo.Constant.BASE_URL
 import com.example.rentelo.dashboard.ApiService
 import com.jakewharton.espresso.OkHttp3IdlingResource
 import dagger.Module
@@ -21,7 +22,7 @@ class FeaturedRentListModule {
 
     @Provides
     fun providesRetrofit(): Retrofit {
-        return Retrofit.Builder().baseUrl("https://api.mockfly.dev/mocks/75e3fd7b-3836-4ab0-a013-911ca1123f00/").client(client)
+        return Retrofit.Builder().baseUrl(BASE_URL).client(client)
             .addConverterFactory(GsonConverterFactory.create()).build()
 
     }
